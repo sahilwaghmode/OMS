@@ -9,17 +9,22 @@
 
 #include "CSVReader.hpp"
 #include <vector>
+#include "SocketConnection.hpp"
 
 int main(int argc, const char * argv[])
 {
-    CSVReader reader("/Users/sahilwaghmode/CppDesigns/OMS/OrderBook/OrderBookDataSet/AMZN_message.csv");
+//    CSVReader reader("/Users/sahilwaghmode/CppDesigns/OMS/OrderBook/OrderBookDataSet/AMZN_message.csv");
+//    
+//    auto start_time = std::chrono::high_resolution_clock::now();
+//    std::vector<std::vector<std::string>> data = reader.readCSV();
+//    auto end_time = std::chrono::high_resolution_clock::now();
+//    
+//    auto readingTime = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+//    
+//    std::cout << "File read in " << readingTime << " ms\n";
     
-    auto start_time = std::chrono::high_resolution_clock::now();
-    std::vector<std::vector<std::string>> data = reader.readCSV();
-    auto end_time = std::chrono::high_resolution_clock::now();
+    SocketConnection client(8080);
+    client.create_connection("192.168.0.163");
     
-    auto readingTime = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
-    
-    std::cout << "File read in " << readingTime << " ms\n";
     return 0;
 }
