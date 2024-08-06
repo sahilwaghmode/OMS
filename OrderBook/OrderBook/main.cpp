@@ -9,7 +9,7 @@
 
 #include "CSVReader.hpp"
 #include <vector>
-#include "SocketConnection.hpp"
+#include "ClientConnection.hpp"
 
 int main(int argc, const char * argv[])
 {
@@ -23,8 +23,14 @@ int main(int argc, const char * argv[])
 //    
 //    std::cout << "File read in " << readingTime << " ms\n";
     
-    SocketConnection client(8080);
-    client.create_connection("192.168.0.163");
+    ClientConnection _client_connection(8080, "192.168.0.163");
+    if(!_client_connection.is_valid_connection())
+    {
+        std::cout << "Could not able to connect to server !" << std::endl;
+        return 0;
+    }
+    _client_connection.start_listening_to_server();
+    
     
     return 0;
 }

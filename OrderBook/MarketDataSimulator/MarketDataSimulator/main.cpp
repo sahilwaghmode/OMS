@@ -17,7 +17,7 @@ int main(int argc, const char * argv[])
 //    server.start_listening();
     
     ServerConnections server(8080);
-    server.StartListeningOnClient();
+    server.start_listening_for_client_connections();
     
     std::cout << "Done closing the server" << std::endl;
     
