@@ -29,9 +29,8 @@ void ClientConnection::start_listening_to_server()
     
     while (1)
     {
-        std::cout << "Enter data to send " << std::endl;
         std::string str;
-        std::cin >> str;
+        std::getline(std::cin, str);
         _client_socket.send_data_to_fd(str, _client_socket.get_conn_fd());
         struct kevent event;
         int newEvent = kevent(kq, &change, 1, &event, 1, NULL);

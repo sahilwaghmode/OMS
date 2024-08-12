@@ -29,6 +29,7 @@ std::vector<std::vector<std::string>> CSVReader::readCSV()
 
         data.push_back(row);
     }
-
+    int i = 0;
+    
     return data;
 }

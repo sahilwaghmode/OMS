@@ -11,7 +11,7 @@
 #include <string>
 #include <iostream>
 
-namespace Msg 
+namespace Msg
 {
 
 struct MsgHeader
@@ -22,6 +22,26 @@ struct MsgHeader
 struct TxtMsg : MsgHeader
 {
     double msg_start;
+};
+
+enum class MsgType : uint32_t
+{
+    NEW_ORDER = 1,
+    CXL_ORDER,
+    DELETE_ORDER,
+    EXEC_VISIBLE,
+    EXEC_HIDDEN,
+    QUIT
+};
+
+struct OrderInfo : MsgHeader
+{
+    double time_stamp;
+    double price;
+    MsgType msg_type;
+    int a;
+    double quantity;
+    double side;
 };
 
 std::unique_ptr<char> create_txt_msg(const std::string& txt, int& length);
