@@ -1,0 +1,29 @@
+# .gitalias
+[alias]
+    # Status and basic operations
+    s = status -sb
+    st = status
+    co = checkout
+    br = branch
+    cb = checkout -b
+    cm = commit
+    cam = commit -am
+    amend = commit --amend
+    amen = commit --amend --no-edit
+    
+    # Logging
+    l = log --oneline
+    lg = log --oneline --graph --decorate
+    lga = log --oneline --graph --decorate --all
+    ll = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    
+    # Push/Pull
+    pu = push -u origin
+    pf = push --force-with-lease
+    plr = pull --rebase
+    
+    # Utilities
+    wip = !git add -A && git commit -m 'WIP'
+    undo = reset --soft HEAD^
+    unstage = reset HEAD --
+    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /

@@ -1,0 +1,8 @@
+*.o*
+*build*
+*bkp*
+*/CMakeFiles/*
+*large_market*
+*/output/*
+*/input/*
+*bak
