@@ -8,18 +8,17 @@
 #ifndef CSVReader_hpp
 #define CSVReader_hpp
 
-#include <string>
 #include <fstream>
+#include <string>
 
-class CSVReader
-{
+class CSVReader {
 public:
-    CSVReader(const std::string& filename);
+  CSVReader(const std::string &filename);
 
-    std::vector<std::vector<std::string>> readCSV();
+  std::vector<std::vector<std::string>> readCSV();
 
 private:
-    std::ifstream file;
+  std::ifstream file;
 };
 
 #endif /* CSVReader_hpp */
