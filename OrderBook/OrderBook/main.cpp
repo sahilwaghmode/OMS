@@ -9,10 +9,14 @@
 
 #include "CSVReader.hpp"
 #include "ClientConnection.hpp"
-#include "Logger.hpp"
+#include "Logging.h"
+#include "SimpleLogger.h"
+#include "thread_utils.hpp"
 #include <vector>
 
-Common::Logger *logger;
+#include "socket_example.hpp"
+
+Common::SimpleLogger *logger;
 
 int main(int argc, const char *argv[]) {
   //    CSVReader
@@ -27,14 +31,19 @@ int main(int argc, const char *argv[]) {
   //    start_time).count();
   //
   //    logger->info("File read in " << readingTime << " ms\n";
-  logger = new Common::Logger("OrderBookLog.log");
+  //   logger = new Common::Logger("OrderBookLog.log");
 
-  ClientConnection _client_connection(8080, "192.168.0.163");
-  if (!_client_connection.is_valid_connection()) {
-    logger->info("Could not able to connect to server !");
-    return 0;
-  }
-  _client_connection.start_listening_to_server();
+  //   ClientConnection _client_connection(8080, "192.168.0.163");
+  //   if (!_client_connection.is_valid_connection()) {
+  //     logger->info("Could not able to connect to server !");
+  //     return 0;
+  //   }
+  //   _client_connection.start_listening_to_server();
+
+  // thread_example::main();
+  // test_logger::run();
+
+  test_socket::run();
 
   return 0;
 }

@@ -6,14 +6,14 @@
 //
 
 #include "SocketConnection.hpp"
-#include "Logger.hpp"
+#include "SimpleLogger.h"
 #include <arpa/inet.h>
 #include <iostream>
 #include <thread>
 #include <unistd.h>
 
 #include "Msg.hpp"
-extern Common::Logger *logger;
+extern Common::SimpleLogger *logger;
 
 SocketConnection::SocketConnection(int port) : _port(port) {
   if ((_socket_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {

@@ -41,7 +41,6 @@ endif()
 include_directories(
     include
     ${PROJECT_SOURCE_DIR}/Connections/include
-    ${PROJECT_SOURCE_DIR}/Logger/include
     ${PROJECT_SOURCE_DIR}/Msg/include
     ${PROJECT_SOURCE_DIR}/OrderBook/include
     ${PROJECT_SOURCE_DIR}/Utils/include
@@ -69,7 +68,6 @@ link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 # Add the source files
 file(GLOB CONNECTIONS_SRC "Connections/*.cpp")
-file(GLOB LOGGER_SRC "Logger/*.cpp")
 file(GLOB MSG_SRC "Msg/*.cpp")
 file(GLOB BOOK_SRC "OrderBook/*.cpp")
 file(GLOB UTILS_SRC "Utils/*.cpp")

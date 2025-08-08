@@ -16,11 +16,11 @@
 #include <unistd.h>
 // kqueue
 
-#include "Logger.hpp"
 #include "Msg.hpp"
+#include "SimpleLogger.h"
 // #include "FileData.hpp"
 
-extern Common::Logger *logger;
+extern Common::SimpleLogger *logger;
 
 ServerConnections::ServerConnections(unsigned int port)
     : _port(port), _server_socket(port) {

@@ -14,9 +14,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 // kqueue
-#include "Logger.hpp"
+#include "SimpleLogger.h"
 
-extern Common::Logger *logger;
+extern Common::SimpleLogger *logger;
 
 ClientConnection::ClientConnection(unsigned int port,
                                    const std::string &ip_addr)

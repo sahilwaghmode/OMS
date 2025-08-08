@@ -7,9 +7,9 @@
 
 #include "FileData.hpp"
 #include "CSVReader.hpp"
-#include "Logger.hpp"
+#include "SimpleLogger.h"
 
-extern Common::Logger *logger;
+extern Common::SimpleLogger *logger;
 
 FileData::FileData() {}
 
