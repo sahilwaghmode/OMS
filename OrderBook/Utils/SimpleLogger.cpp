@@ -1,11 +1,5 @@
-//
-//  Logger.cpp
-//  MarketDataSimulator
-//
-//  Created by Sahil Waghmode on 10/08/24.
-//
 
-#include "Logger.hpp"
+#include "SimpleLogger.h"
 #include "time_utils.hpp"
 #include <condition_variable>
 #include <iostream>
@@ -14,12 +8,13 @@
 #include <sstream>
 #include <thread>
 namespace Common {
-Logger::Logger(const std::string &file_name) : _file_name(file_name) {
+SimpleLogger::SimpleLogger(const std::string &file_name)
+    : _file_name(file_name) {
   _file.open(_file_name, std::ios::out | std::ios::app);
-  _logger_thread = new std::thread(&Logger::process_queue, this);
+  _logger_thread = new std::thread(&SimpleLogger::process_queue, this);
 }
 
-Logger::~Logger() {
+SimpleLogger::~SimpleLogger() {
   {
     std::unique_lock<std::mutex> lock(_mtx);
     _running = false;
@@ -30,9 +25,9 @@ Logger::~Logger() {
   _file.close();
 }
 
-void Logger::process_queue() {
+void SimpleLogger::process_queue() {
   if (!_file.is_open()) {
-    std::cerr << "Logger file is not open" << std::endl;
+    std::cerr << "SimpleLogger file is not open" << std::endl;
     return;
   }
   while (true) {
@@ -41,7 +36,7 @@ void Logger::process_queue() {
 
     std::string msg = _queue.front();
     _queue.pop();
-    _file << getCurrentTimeStr() << " " << msg << std::endl;
+    _file << getCurrentTime() << " " << msg << std::endl;
 
     if (!_running && _queue.empty()) {
       break;

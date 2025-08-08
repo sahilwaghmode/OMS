@@ -1,12 +1,12 @@
 //
-//  Logger.hpp
+//  SimpleLogger.hpp
 //  MarketDataSimulator
 //
 //  Created by Sahil Waghmode on 10/08/24.
 //
 
-#ifndef Logger_hpp
-#define Logger_hpp
+#ifndef SimpleLogger_hpp
+#define SimpleLogger_hpp
 #include <fstream>
 #include <queue>
 #include <string>
@@ -16,7 +16,7 @@ namespace Common {
 
 enum class LogLevel : uint8_t { INFO, ERROR, WARNING };
 
-class Logger {
+class SimpleLogger {
 private:
   const std::string _file_name;
   std::ofstream _file;
@@ -40,8 +40,8 @@ private:
   }
 
 public:
-  explicit Logger(const std::string &file_name);
-  ~Logger();
+  explicit SimpleLogger(const std::string &file_name);
+  ~SimpleLogger();
 
   template <typename T, typename... Args>
   void log(const T &first, const Args &...args) {
@@ -102,4 +102,4 @@ public:
   }
 };
 } // namespace Common
-#endif /* Logger_hpp */
+#endif /* SimpleLogger_hpp */
